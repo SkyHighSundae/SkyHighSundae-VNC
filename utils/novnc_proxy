@@ -8,7 +8,7 @@ usage() {
         echo "$*"
         echo
     fi
-    echo "Usage: ${NAME} [--listen [HOST:]PORT] [--vnc VNC_HOST:PORT] [--cert CERT] [--ssl-only]"
+    echo "SkyHighSundae VNC Proxy Usage: ${NAME} [--listen [HOST:]PORT] [--vnc VNC_HOST:PORT] [--cert CERT] [--ssl-only]"
     echo
     echo "Starts the WebSockets proxy and a mini-webserver and "
     echo "provides a cut-and-paste URL to go to."
