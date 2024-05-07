@@ -20,16 +20,16 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 
 #: ../app/ui.js:404
-msgid "Connecting..."
-msgstr "Verbinden..."
+msgid "Please Wait"
+msgstr "Bitte warten"
 
 #: ../app/ui.js:411
 msgid "Disconnecting..."
 msgstr "Verbindung trennen..."
 
 #: ../app/ui.js:417
-msgid "Reconnecting..."
-msgstr "Verbindung wiederherstellen..."
+msgid "Please Wait"
+msgstr "Bitte warten"
 
 #: ../app/ui.js:422
 msgid "Internal error"
@@ -196,8 +196,8 @@ msgid "Fullscreen"
 msgstr "Vollbild"
 
 #: ../vnc.html:192 ../vnc.html:199
-msgid "Settings"
-msgstr "Einstellungen"
+msgid "SkyHighSundae VNC Settings"
+msgstr "Einstellungen von SkyHighSundae VNC"
 
 #: ../vnc.html:202
 msgid "Shared Mode"
