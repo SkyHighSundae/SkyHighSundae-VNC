@@ -14,7 +14,7 @@
     Connect parameters are provided in query string:
         http://example.com/?host=HOST&port=PORT&scale=true
     -->
-    <title>noVNC</title>
+    <title>SkyHighSundae VNC</title>
 
     <style>
 
@@ -80,7 +80,7 @@
         // When this function is called, the server requires
         // credentials to authenticate
         function credentialsAreRequired(e) {
-            const password = prompt("Password Required:");
+            const password = prompt("Enter VNC Key:");
             rfb.sendCredentials({ password: password });
         }
 
@@ -137,7 +137,7 @@
         // | | | Connect | | |
         // v v v         v v v
 
-        status("Connecting");
+        status("Please wait");
 
         // Build the websocket URL used to connect
         let url;
@@ -171,7 +171,7 @@
 <body>
     <div id="top_bar">
         <div id="status">Loading</div>
-        <div id="sendCtrlAltDelButton">Send CtrlAltDel</div>
+        <div id="sendCtrlAltDelButton">Control + Alt + Delete</div>
     </div>
     <div id="screen">
         <!-- This is where the remote screen will appear -->
