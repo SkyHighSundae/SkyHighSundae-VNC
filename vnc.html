@@ -118,7 +118,7 @@
                     <img alt="" src="app/images/power.svg"> Power
                 </div>
                 <input type="button" id="noVNC_shutdown_button" value="Shutdown">
-                <input type="button" id="noVNC_reboot_button" value="Reboot">
+                <input type="button" id="noVNC_reboot_button" value="Restart">
                 <input type="button" id="noVNC_reset_button" value="Reset">
             </div>
             </div>
@@ -130,7 +130,7 @@
             <div class="noVNC_vcenter">
             <div id="noVNC_clipboard" class="noVNC_panel">
                 <div class="noVNC_heading">
-                    <img alt="" src="app/images/clipboard.svg"> Clipboard
+                    <img alt="" src="app/images/clipboard.svg"> Clipboard Manager
                 </div>
                 <p class="noVNC_subheading">
                     Edit your clipboard content.
@@ -177,7 +177,7 @@
                         <div class="noVNC_expander">Advanced Options</div>
                         <div><ul>
                             <li>
-                                <label for="noVNC_setting_quality">Quality:</label>
+                                <label for="noVNC_setting_quality">Quality Settings:</label>
                                 <input id="noVNC_setting_quality" type="range" min="0" max="9" value="6">
                             </li>
                             <li>
@@ -190,7 +190,7 @@
                                 <input id="noVNC_setting_repeaterID" type="text" value="">
                             </li>
                             <li>
-                                <div class="noVNC_expander">WebSocket Server</div>
+                                <div class="noVNC_expander">WebSocket Server Settings</div>
                                 <div><ul>
                                     <li>
                                         <label><input id="noVNC_setting_encrypt" type="checkbox"> Encrypt</label>
@@ -204,7 +204,7 @@
                                         <input id="noVNC_setting_port" type="number">
                                     </li>
                                     <li>
-                                        <label for="noVNC_setting_path">Path:</label>
+                                        <label for="noVNC_setting_path">Path Settings:</label>
                                         <input id="noVNC_setting_path" type="text" value="websockify">
                                     </li>
                                 </ul></div>
@@ -243,7 +243,7 @@
             <!-- Connection Controls -->
             <input type="image" alt="Disconnect" src="app/images/disconnect.svg"
                 id="noVNC_disconnect_button" class="noVNC_button"
-                title="Disconnect">
+                title="End Session">
 
             </div>
         </div>
@@ -264,7 +264,7 @@
             <p class="noVNC_logo" translate="no"><span>no</span>VNC</p>
             <div>
                 <button id="noVNC_connect_button">
-                    <img alt="" src="app/images/connect.svg"> Connect
+                    <img alt="" src="app/images/connect.svg"> Start VNC Session
                 </button>
             </div>
         </div>
