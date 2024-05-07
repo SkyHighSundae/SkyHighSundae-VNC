@@ -13,7 +13,7 @@
     or the fragment:
         http://example.com/#host=HOST&port=PORT&encrypt=1
     -->
-    <title>noVNC</title>
+    <title>SkyHighSundae VNC</title>
 
     <link rel="icon" type="image/x-icon" href="app/images/icons/novnc.ico">
 
@@ -52,7 +52,7 @@
 
     <div id="noVNC_fallback_error" class="noVNC_center">
         <div>
-            <div>noVNC encountered an error:</div>
+            <div>We are sorry, but SkyHighSundae VNC encountered an error:</div>
             <br>
             <div id="noVNC_fallback_errormsg"></div>
         </div>
@@ -78,13 +78,13 @@
             <!--noVNC Touch Device only buttons-->
             <div id="noVNC_mobile_buttons">
                 <input type="image" alt="Keyboard" src="app/images/keyboard.svg"
-                    id="noVNC_keyboard_button" class="noVNC_button" title="Show Keyboard">
+                    id="noVNC_keyboard_button" class="noVNC_button" title="Toggle Keyboard">
             </div>
 
             <!-- Extra manual keys -->
             <input type="image" alt="Extra keys" src="app/images/toggleextrakeys.svg"
                 id="noVNC_toggle_extra_keys_button" class="noVNC_button"
-                title="Show Extra Keys">
+                title="More Keys">
             <div class="noVNC_vcenter">
             <div id="noVNC_modifiers" class="noVNC_panel">
                 <input type="image" alt="Ctrl" src="app/images/ctrl.svg"
@@ -104,14 +104,14 @@
                     title="Send Escape">
                 <input type="image" alt="Ctrl+Alt+Del" src="app/images/ctrlaltdel.svg"
                     id="noVNC_send_ctrl_alt_del_button" class="noVNC_button"
-                    title="Send Ctrl-Alt-Del">
+                    title="Control + Alt + Delete">
             </div>
             </div>
 
             <!-- Shutdown/Reboot -->
-            <input type="image" alt="Shutdown/Reboot" src="app/images/power.svg"
+            <input type="image" alt="Shutdown/Restart" src="app/images/power.svg"
                 id="noVNC_power_button" class="noVNC_button"
-                title="Shutdown/Reboot...">
+                title="Shutdown/Restart...">
             <div class="noVNC_vcenter">
             <div id="noVNC_power" class="noVNC_panel">
                 <div class="noVNC_heading">
@@ -126,14 +126,14 @@
             <!-- Clipboard -->
             <input type="image" alt="Clipboard" src="app/images/clipboard.svg"
                 id="noVNC_clipboard_button" class="noVNC_button"
-                title="Clipboard">
+                title="Paste Host Clipboard to VNC Clipboard">
             <div class="noVNC_vcenter">
             <div id="noVNC_clipboard" class="noVNC_panel">
                 <div class="noVNC_heading">
                     <img alt="" src="app/images/clipboard.svg"> Clipboard
                 </div>
                 <p class="noVNC_subheading">
-                    Edit clipboard content in the textarea below.
+                    Edit your clipboard content.
                 </p>
                 <textarea id="noVNC_clipboard_text" rows=5></textarea>
             </div>
@@ -145,13 +145,13 @@
                 title="Full Screen">
 
             <!-- Settings -->
-            <input type="image" alt="Settings" src="app/images/settings.svg"
+            <input type="image" alt="SkyHighSundae VNC Settings" src="app/images/settings.svg"
                 id="noVNC_settings_button" class="noVNC_button"
-                title="Settings">
+                title="SkyHighSundae VNC Settings">
             <div class="noVNC_vcenter">
             <div id="noVNC_settings" class="noVNC_panel">
                 <div class="noVNC_heading">
-                    <img alt="" src="app/images/settings.svg"> Settings
+                    <img alt="" src="app/images/settings.svg"> SkyHighSundae VNC Settings
                 </div>
                 <ul>
                     <li>
@@ -165,23 +165,23 @@
                         <label><input id="noVNC_setting_view_clip" type="checkbox"> Clip to Window</label>
                     </li>
                     <li>
-                        <label for="noVNC_setting_resize">Scaling Mode:</label>
+                        <label for="noVNC_setting_resize">Scaling Settings:</label>
                         <select id="noVNC_setting_resize" name="vncResize">
                             <option value="off">None</option>
-                            <option value="scale">Local Scaling</option>
-                            <option value="remote">Remote Resizing</option>
+                            <option value="scale">Host Size</option>
+                            <option value="remote">VNC Size</option>
                         </select>
                     </li>
                     <li><hr></li>
                     <li>
-                        <div class="noVNC_expander">Advanced</div>
+                        <div class="noVNC_expander">Advanced Options</div>
                         <div><ul>
                             <li>
                                 <label for="noVNC_setting_quality">Quality:</label>
                                 <input id="noVNC_setting_quality" type="range" min="0" max="9" value="6">
                             </li>
                             <li>
-                                <label for="noVNC_setting_compression">Compression level:</label>
+                                <label for="noVNC_setting_compression">Compression Level:</label>
                                 <input id="noVNC_setting_compression" type="range" min="0" max="9" value="2">
                             </li>
                             <li><hr></li>
@@ -190,17 +190,17 @@
                                 <input id="noVNC_setting_repeaterID" type="text" value="">
                             </li>
                             <li>
-                                <div class="noVNC_expander">WebSocket</div>
+                                <div class="noVNC_expander">WebSocket Server</div>
                                 <div><ul>
                                     <li>
                                         <label><input id="noVNC_setting_encrypt" type="checkbox"> Encrypt</label>
                                     </li>
                                     <li>
-                                        <label for="noVNC_setting_host">Host:</label>
+                                        <label for="noVNC_setting_host">Host Settings:</label>
                                         <input id="noVNC_setting_host">
                                     </li>
                                     <li>
-                                        <label for="noVNC_setting_port">Port:</label>
+                                        <label for="noVNC_setting_port">Port Manager:</label>
                                         <input id="noVNC_setting_port" type="number">
                                     </li>
                                     <li>
@@ -219,7 +219,7 @@
                             </li>
                             <li><hr></li>
                             <li>
-                                <label><input id="noVNC_setting_show_dot" type="checkbox"> Show Dot when No Cursor</label>
+                                <label><input id="noVNC_setting_show_dot" type="checkbox"> View Dot when no cursor is present</label>
                             </li>
                             <li><hr></li>
                             <!-- Logging selection dropdown -->
@@ -233,7 +233,7 @@
                     </li>
                     <li class="noVNC_version_separator"><hr></li>
                     <li class="noVNC_version_wrapper">
-                        <span>Version:</span>
+                        <span>Version Info:</span>
                         <span class="noVNC_version"></span>
                     </li>
                 </ul>
@@ -274,7 +274,7 @@
     <div class="noVNC_center noVNC_connect_layer">
     <div id="noVNC_verify_server_dlg" class="noVNC_panel"><form>
         <div class="noVNC_heading">
-            Server identity
+            Server Identity Manager
         </div>
         <div>
             The server has provided the following identifying information:
@@ -298,18 +298,18 @@
     <div class="noVNC_center noVNC_connect_layer">
     <div id="noVNC_credentials_dlg" class="noVNC_panel"><form>
         <div class="noVNC_heading">
-            Credentials
+            Login Manager
         </div>
         <div id="noVNC_username_block">
-            <label for="noVNC_username_input">Username:</label>
+            <label for="noVNC_username_input">Enter Username:</label>
             <input id="noVNC_username_input">
         </div>
         <div id="noVNC_password_block">
-            <label for="noVNC_password_input">Password:</label>
+            <label for="noVNC_password_input">Enter VNC Key:</label>
             <input id="noVNC_password_input" type="password">
         </div>
         <div>
-            <input id="noVNC_credentials_button" type="submit" value="Send Credentials" class="noVNC_submit">
+            <input id="noVNC_credentials_button" type="submit" value="Login" class="noVNC_submit">
         </div>
     </form></div>
     </div>
