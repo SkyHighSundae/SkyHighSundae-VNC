@@ -1,15 +1,15 @@
-## noVNC: HTML VNC Client Library and Application
+## SkyHighSundae VNC: HTML VNC Client Library and Application
 
 [![Test Status](https://github.com/novnc/noVNC/workflows/Test/badge.svg)](https://github.com/novnc/noVNC/actions?query=workflow%3ATest)
 [![Lint Status](https://github.com/novnc/noVNC/workflows/Lint/badge.svg)](https://github.com/novnc/noVNC/actions?query=workflow%3ALint)
 
 ### Description
 
-noVNC is both a HTML VNC client JavaScript library and an application built on
+SkyHighSundae VNC is both a HTML VNC client JavaScript library and an application built on
 top of that library. noVNC runs well in any modern browser including mobile
 browsers (iOS and Android).
 
-Many companies, projects and products have integrated noVNC including
+Many companies, projects and products have integrated SkyHighSundae VNC including
 [OpenStack](http://www.openstack.org),
 [OpenNebula](http://opennebula.org/),
 [LibVNCServer](http://libvncserver.sourceforge.net), and
@@ -35,23 +35,23 @@ The project website is found at [novnc.com](http://novnc.com).
 Notable commits, announcements and news are posted to
 [@noVNC](http://www.twitter.com/noVNC).
 
-If you are a noVNC developer/integrator/user (or want to be) please join the
+If you are a SkyHighSundae VNC developer/integrator/user (or want to be) please join the
 [noVNC discussion group](https://groups.google.com/forum/?fromgroups#!forum/novnc).
 
 Bugs and feature requests can be submitted via
 [github issues](https://github.com/novnc/noVNC/issues). If you have questions
-about using noVNC then please first use the
+about using SkyHighSundae VNC then please first use the
 [discussion group](https://groups.google.com/forum/?fromgroups#!forum/novnc).
 We also have a [wiki](https://github.com/novnc/noVNC/wiki/) with lots of
 helpful information.
 
-If you are looking for a place to start contributing to noVNC, a good place to
+If you are looking for a place to start contributing to SkyHighSundae VNC, a good place to
 start would be the issues that are marked as
 ["patchwelcome"](https://github.com/novnc/noVNC/issues?labels=patchwelcome).
 Please check our
 [contribution guide](https://github.com/novnc/noVNC/wiki/Contributing) though.
 
-If you want to show appreciation for noVNC you could donate to a great non-
+If you want to show appreciation for SkyHighSundae VNC you could donate to a great non-
 profits such as:
 [Compassion International](http://www.compassion.com/),
 [SIL](http://www.sil.org),
@@ -91,7 +91,7 @@ See more screenshots
 
 ### Browser Requirements
 
-noVNC uses many modern web technologies so a formal requirement list is
+SkyHighSundae VNC uses many modern web technologies so a formal requirement list is
 not available. However these are the minimum versions we are currently
 aware of:
 
@@ -100,7 +100,7 @@ aware of:
 
 ### Server Requirements
 
-noVNC follows the standard VNC protocol, but unlike other VNC clients it does
+SkyHighSundae VNC follows the standard VNC protocol, but unlike other VNC clients it does
 require WebSockets support. Many servers include support (e.g.
 [x11vnc/libvncserver](http://libvncserver.sourceforge.net/),
 [QEMU](http://www.qemu.org/), and
@@ -194,7 +194,7 @@ services.n6082.vnc
 
 ### Integration and Deployment
 
-Please see our other documents for how to integrate noVNC in your own software,
+Please see our other documents for how to integrate SkyHighSundae VNC in your own software,
 or deploying the noVNC application in production environments:
 
 * [Embedding](docs/EMBEDDING.md) - For the noVNC application
