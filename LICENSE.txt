@@ -1,19 +1,19 @@
-noVNC is Copyright (C) 2022 The noVNC Authors
+SkyHighSundae VNC is Copyright (C) 2024 SkyHighSundae VNC
 (./AUTHORS)
 
 The noVNC core library files are licensed under the MPL 2.0 (Mozilla
-Public License 2.0). The noVNC core library is composed of the
-Javascript code necessary for full noVNC operation. This includes (but
+Public License 2.0). The SkyHighSundae VNC core library is composed of the
+Javascript code necessary for full SkyHighSundae VNC operation. This includes (but
 is not limited to):
 
     core/**/*.js
     app/*.js
     test/playback.js
 
-The HTML, CSS, font and images files that included with the noVNC
+The HTML, CSS, font and images files that included with the SkyHighSundae VNC
 source distibution (or repository) are not considered part of the
 noVNC core library and are licensed under more permissive licenses.
-The intent is to allow easy integration of noVNC into existing web
+The intent is to allow easy integration of SkyHighSundae VNC into existing web
 sites and web applications.
 
 The HTML, CSS, font and image files are licensed as follows:
