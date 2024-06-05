@@ -1,13 +1,13 @@
-# French translations for noVNC package
-# Traductions françaises du paquet noVNC.
-# Copyright (C) 2021 The noVNC Authors
-# This file is distributed under the same license as the noVNC package.
+# French translations for SkyHighSundae VNC package
+# Traductions françaises du paquet SkyHighsundae VNC.
+# Copyright (C) 2024 SkyHighSundae
+# This file is distributed under the same license as the SkyHighSundae VNC package.
 # Jose <jose.matsuda@canada.ca>, 2021.
 # Lowxorx <lowxorx@lahan.fr>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: noVNC 1.2.0\n"
+"Project-Id-Version: SkyHighSundae VNC 1.4.0\n"
 "Report-Msgid-Bugs-To: novnc@googlegroups.com\n"
 "POT-Creation-Date: 2020-07-03 16:11+0200\n"
 "PO-Revision-Date: 2022-04-25 23:40+0200\n"
