@@ -1,6 +1,6 @@
 /*
- * noVNC: HTML5 VNC client
- * Copyright (C) 2019 The noVNC Authors
+ * SkyHighSundae VNC: HTML5 VNC client
+ * Copyright (C) 2024 SkyHighSundae
  * Licensed under MPL 2.0 (see LICENSE.txt)
  *
  * See README.md for usage and integration instructions.
