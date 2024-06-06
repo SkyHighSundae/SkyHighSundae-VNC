@@ -128,11 +128,11 @@ proxy.
   configured, and enjoy!
 
 ### Installation from Snap Package
-Running the command below will install the latest release of noVNC from Snap:
+Running the command below will install the latest release of SkyHighSundae VNC from Snap:
 
 `sudo snap install novnc`
 
-#### Running noVNC from Snap Directly
+#### Running SkyHighSundae VNC from Snap Directly
 
 You can run the Snap-package installed novnc directly with, for example:
 
@@ -142,7 +142,7 @@ If you want to use certificate files, due to standard Snap confinement restricti
   
   `novnc --listen 8443 --cert ~jsmith/snap/novnc/current/self.crt --key ~jsmith/snap/novnc/current/self.key --vnc ubuntu.example.com:5901`
 
-#### Running noVNC from Snap as a Service (Daemon)
+#### Running SkyHighSundae VNC from Snap as a Service (Daemon)
 The Snap package also has the capability to run a 'novnc' service which can be 
 configured to listen on multiple ports connecting to multiple VNC servers 
 (effectively a service runing multiple instances of novnc).
@@ -207,23 +207,7 @@ See [AUTHORS](AUTHORS) for a (full-ish) list of authors.  If you're not on
 that list and you think you should be, feel free to send a PR to fix that.
 
 * Core team:
-    * [Samuel Mannehed](https://github.com/samhed) (Cendio)
-    * [Pierre Ossman](https://github.com/CendioOssman) (Cendio)
-
-* Previous core contributors:
-    * [Joel Martin](https://github.com/kanaka) (Project founder)
-    * [Solly Ross](https://github.com/DirectXMan12) (Red Hat / OpenStack)
-
-* Notable contributions:
-    * UI and Icons : Pierre Ossman, Chris Gordon
-    * Original Logo : Michael Sersen
-    * tight encoding : Michael Tinglof (Mercuri.ca)
-    * RealVNC RSA AES authentication : USTC Vlab Team
-
-* Included libraries:
-    * base64 : Martijn Pieters (Digital Creations 2), Samuel Sieb (sieb.net)
-    * DES : Dave Zimmerman (Widget Workshop), Jef Poskanzer (ACME Labs)
-    * Pako : Vitaly Puzrin (https://github.com/nodeca/pako)
+    * SkyHighSundae and Guest24897: Owners
 
 Do you want to be on this list? Check out our
 [contribution guide](https://github.com/novnc/noVNC/wiki/Contributing) and
