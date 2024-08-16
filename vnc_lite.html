@@ -3,12 +3,12 @@
 <head>
 
     <!--
-    noVNC example: lightweight example using minimal UI and features
+    SkyHighSundaeVNC: VNC made easy!
 
     This is a self-contained file which doesn't import WebUtil or external CSS.
 
-    Copyright (C) 2019 The noVNC Authors
-    noVNC is licensed under the MPL 2.0 (see LICENSE.txt)
+    Copyright (C) 2024 SkyHighSundaeVNC
+    SkyHighSundaeVNC is licensed under the MPL 2.0 (see LICENSE.txt)
     This file is licensed under the 2-Clause BSD license (see LICENSE.txt).
 
     Connect parameters are provided in query string:
@@ -77,7 +77,7 @@
         // This function is called when we are disconnected
         function disconnectedFromServer(e) {
             if (e.detail.clean) {
-                status("Disconnected");
+                status("We are sorry, but SkyHighSundaeVNC cant establish the connection to the vnc server.");
             } else {
                 status("Something went wrong, connection is closed");
             }
