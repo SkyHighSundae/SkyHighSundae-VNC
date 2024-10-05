@@ -300,17 +300,7 @@
         <div class="noVNC_heading">
             Login Manager
         </div>
-        <div id="noVNC_username_block">
-            <label for="noVNC_username_input">Enter Username:</label>
-            <input id="noVNC_username_input">
-        </div>
-        <div id="noVNC_password_block">
-            <label for="noVNC_password_input">Enter VNC Key:</label>
-            <input id="noVNC_password_input" type="password">
-        </div>
-        <div>
-            <input id="noVNC_credentials_button" type="submit" value="Login" class="noVNC_submit">
-            <button onclick="
+        <button onclick="
     var modal = document.createElement('div');
     modal.style.position = 'fixed';
     modal.style.zIndex = '1';
@@ -373,6 +363,16 @@
     }, 10);
 ">Open Login Manager Help</button>
 
+        <div id="noVNC_username_block">
+            <label for="noVNC_username_input">Enter Username:</label>
+            <input id="noVNC_username_input">
+        </div>
+        <div id="noVNC_password_block">
+            <label for="noVNC_password_input">Enter VNC Key:</label>
+            <input id="noVNC_password_input" type="password">
+        </div>
+        <div>
+            <input id="noVNC_credentials_button" type="submit" value="Login" class="noVNC_submit">
         </div>
     </form></div>
     </div>
