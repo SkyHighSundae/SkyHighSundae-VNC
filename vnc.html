@@ -17,6 +17,527 @@
 
     <link rel="icon" type="image/x-icon" href="app/images/icons/novnc.ico">
 
+    <!-- Help Center Modal Container (Initially Hidden) -->
+<div id="helpcentermodal" style="display: none;"></div>
+
+<!-- Embedded JavaScript and CSS -->
+<script>
+(function() {
+  // Include Roboto Font
+  var link = document.createElement('link');
+  link.href = 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+
+  // Styles for Modal (Embedded CSS)
+  var style = document.createElement('style');
+  style.textContent = `
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Modal Styles */
+    #helpcentermodal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1000;
+      display: none;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+      background-color: var(--content-bg-color);
+      color: var(--text-color);
+    }
+
+    #helpcentermodal.open {
+      display: block;
+      opacity: 1;
+    }
+
+    #helpcentermodal.close-animation {
+      opacity: 0;
+    }
+
+    #helpcentermodal.fullscreen {
+      border-radius: 0;
+    }
+
+    #helpcentermodal.windowed {
+      width: 600px;
+      height: 400px;
+      max-width: 90%;
+      max-height: 90%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      cursor: default;
+    }
+
+    #helpcentermodal .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--header-bg-color);
+      padding: 10px;
+    }
+
+    #helpcentermodal.windowed .modal-header {
+      cursor: move;
+    }
+
+    #helpcentermodal.fullscreen .modal-header {
+      cursor: default;
+    }
+
+    #helpcentermodal .modal-title {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    /* Modal Controls */
+    #helpcentermodal .modal-controls .icon {
+      margin-left: 15px;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    /* Hover Animations for Icons */
+    #helpcentermodal .modal-controls .icon:hover {
+      color: #FF4081; /* Change icon color on hover */
+      transform: scale(1.2); /* Slightly enlarge icon */
+    }
+
+    #helpcentermodal .modal-content {
+      padding: 20px;
+      background-color: var(--content-bg-color);
+      color: var(--text-color);
+      height: calc(100% - 60px); /* Adjust height based on header and padding */
+      overflow-y: auto;
+      scrollbar-width: thin; /* For Firefox */
+      scrollbar-color: #d3d3d3 #f1f1f1; /* For Firefox */
+    }
+
+    /* Custom Scrollbar Styles */
+    #helpcentermodal .modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #helpcentermodal .modal-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    #helpcentermodal .modal-content::-webkit-scrollbar-thumb {
+      background-color: #d3d3d3;
+      border-radius: 4px;
+    }
+
+    #helpcentermodal.windowed .resizer {
+      display: block;
+    }
+
+    #helpcentermodal.fullscreen .resizer {
+      display: none;
+    }
+
+    .resizer {
+      width: 10px;
+      height: 10px;
+      background: var(--header-bg-color);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      cursor: se-resize;
+    }
+
+    /* Info Bar Styles */
+    #helpcentermodal .info-bar {
+      position: absolute;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: var(--info-bg-color);
+      padding: 20px;
+      box-sizing: border-box;
+      transition: right 0.3s ease-in-out;
+      color: var(--text-color);
+      overflow-y: auto;
+      scrollbar-width: thin; /* For Firefox */
+      scrollbar-color: #d3d3d3 #f1f1f1; /* For Firefox */
+    }
+
+    #helpcentermodal .info-bar.visible {
+      right: 0;
+    }
+
+    /* Custom Scrollbar Styles for Info Bar */
+    #helpcentermodal .info-bar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #helpcentermodal .info-bar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    #helpcentermodal .info-bar::-webkit-scrollbar-thumb {
+      background-color: #d3d3d3;
+      border-radius: 4px;
+    }
+
+    /* Button Styles with Glow Effect (Material UI) */
+    .material-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s;
+    }
+
+    .material-button::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      transition: width 0.3s ease-out, height 0.3s ease-out;
+    }
+
+    .material-button:active::after {
+      width: 200px;
+      height: 200px;
+    }
+
+    .material-button:hover {
+      background-color: #1976D2;
+    }
+
+    /* Modal Opening Animation */
+    #helpcentermodal.open {
+      animation: modalFadeIn 0.3s forwards;
+    }
+
+    /* Modal Closing Animation */
+    #helpcentermodal.close-animation {
+      animation: modalFadeOut 0.3s forwards;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    /* Modal Settings Panel */
+    .modal-settings {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--content-bg-color);
+      color: var(--text-color);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1100;
+    }
+
+    .modal-settings.visible {
+      display: block;
+    }
+
+    /* Theme Variables */
+    :root {
+      --header-bg-color: #2196F3;
+      --content-bg-color: #FFFFFF;
+      --info-bg-color: #f1f1f1;
+      --text-color: #000000;
+    }
+
+    .dark-mode {
+      --header-bg-color: #424242;
+      --content-bg-color: #303030;
+      --info-bg-color: #424242;
+      --text-color: #FFFFFF;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Build Help Center Modal Structure
+  function buildHelpCenterModal() {
+    var modal = document.getElementById('helpcentermodal');
+    modal.innerHTML = `
+      <div class="modal-header" id="modalHeader">
+        <span class="modal-title">SkyHighSundaeVNC - Help Center</span>
+        <div class="modal-controls">
+          <span id="infoIcon" class="icon">ℹ️</span>
+          <span id="windowButton" class="icon">🗖</span>
+          <span id="closeButton" class="icon">&times;</span>
+        </div>
+      </div>
+      <div class="modal-content">
+        <!-- Your Text Content -->
+        <div id="textContent">
+          <p><strong>How to connect:</strong></p>
+          <p>Make sure that you put the right VNC Port when starting up the server.</p>
+          <p>If you have gotten this as a link, contact your administrator.</p>
+          <p><strong>Clipboard Manager:</strong></p>
+          <p>You can share your host clipboard and the VNC clipboard. To do it, open the clipboard manager and paste in the content.</p>
+          <p><strong>Settings:</strong></p>
+          <p>Here you can change your SkyHighSundaeVNC settings.</p>
+          <p><strong>How to use SkyHighSundaeVNC on Android or iOS:</strong></p>
+          <p>You can use the iOS or Android keyboard to use it as a VNC keyboard.</p>
+          <p><strong>GitHub Codespaces:</strong></p>
+          <p>Please note that running this in GitHub Codespaces with GNOME, Openbox, KDE Plasma, and XFCE is not supported since it's like hacking and getting a free VPS to run virtual machines or host a CollabVM server.</p>
+        </div>
+        <!-- Modal Settings Button with Glow Effect -->
+        <button class="material-button" id="modalSettingsButton">Modal Settings</button>
+      </div>
+      <div id="infoBar" class="info-bar">
+        <p><strong>Name:</strong> SkyHighSundaeVNC Help Center</p>
+        <p><strong>Description:</strong> Guidance and support for using SkyHighSundaeVNC.</p>
+        <!-- Close Button in Info Bar -->
+        <button class="material-button" id="infoCloseButton">Close</button>
+      </div>
+      <!-- Modal Settings Panel -->
+      <div class="modal-settings" id="modalSettings">
+        <h3>Settings</h3>
+        <label>
+          <input type="radio" name="theme" value="light" id="lightMode">
+          Light Mode
+        </label><br>
+        <label>
+          <input type="radio" name="theme" value="dark" id="darkMode">
+          Dark Mode
+        </label><br>
+        <!-- Close Button in Settings -->
+        <button class="material-button" id="settingsCloseButton">Close</button>
+      </div>
+      <div class="resizer" id="resizer"></div>
+    `;
+
+    // Initialize Modal Functionality
+    initHelpCenterModalFunctions();
+  }
+
+  // Initialize Help Center Modal Functions
+  function initHelpCenterModalFunctions() {
+    var modal = document.getElementById('helpcentermodal');
+    var closeButton = modal.querySelector('#closeButton');
+    var infoIcon = modal.querySelector('#infoIcon');
+    var infoBar = modal.querySelector('#infoBar');
+    var header = modal.querySelector('#modalHeader');
+    var resizer = modal.querySelector('#resizer');
+    var windowButton = modal.querySelector('#windowButton');
+    var infoCloseButton = modal.querySelector('#infoCloseButton');
+    var modalSettingsButton = modal.querySelector('#modalSettingsButton');
+    var modalSettings = modal.querySelector('#modalSettings');
+    var settingsCloseButton = modal.querySelector('#settingsCloseButton');
+    var lightModeRadio = modal.querySelector('#lightMode');
+    var darkModeRadio = modal.querySelector('#darkMode');
+
+    var isWindowed = false;
+
+    // Apply saved theme on modal load
+    applySavedTheme();
+
+    // Close Modal with Animation
+    closeButton.addEventListener('click', function() {
+      modal.classList.remove('open');
+      modal.classList.add('close-animation');
+      setTimeout(function() {
+        modal.style.display = 'none';
+        modal.classList.remove('close-animation');
+        // Reset to fullscreen for next open
+        if (isWindowed) {
+          toggleWindowedMode();
+        }
+      }, 300);
+    });
+
+    // Toggle Info Bar
+    infoIcon.addEventListener('click', function() {
+      infoBar.classList.toggle('visible');
+    });
+
+    // Close Info Bar with Button
+    infoCloseButton.addEventListener('click', function() {
+      infoBar.classList.remove('visible');
+    });
+
+    // Toggle Windowed Mode
+    windowButton.addEventListener('click', toggleWindowedMode);
+
+    function toggleWindowedMode() {
+      isWindowed = !isWindowed;
+      if (isWindowed) {
+        modal.classList.remove('fullscreen');
+        modal.classList.add('windowed');
+        // Enable draggable and resizable
+        enableDrag();
+        resizer.style.display = 'block';
+      } else {
+        modal.classList.remove('windowed');
+        modal.classList.add('fullscreen');
+        // Disable draggable and resizable
+        disableDrag();
+        resizer.style.display = 'none';
+        // Reset modal position and size
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+      }
+    }
+
+    // Make Modal Movable
+    var isDragging = false;
+    var startX, startY, initialX, initialY;
+
+    function enableDrag() {
+      header.addEventListener('mousedown', dragMouseDown);
+    }
+
+    function disableDrag() {
+      header.removeEventListener('mousedown', dragMouseDown);
+    }
+
+    function dragMouseDown(e) {
+      isDragging = true;
+      initialX = modal.offsetLeft;
+      initialY = modal.offsetTop;
+      startX = e.clientX;
+      startY = e.clientY;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', stopDrag);
+    }
+
+    function drag(e) {
+      if (isDragging) {
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        modal.style.left = initialX + dx + 'px';
+        modal.style.top = initialY + dy + 'px';
+      }
+    }
+
+    function stopDrag() {
+      isDragging = false;
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('mouseup', stopDrag);
+    }
+
+    // Make Modal Resizable
+    resizer.addEventListener('mousedown', initResize);
+
+    function initResize(e) {
+      window.addEventListener('mousemove', resize);
+      window.addEventListener('mouseup', stopResize);
+    }
+
+    function resize(e) {
+      modal.style.width = (e.clientX - modal.offsetLeft) + 'px';
+      modal.style.height = (e.clientY - modal.offsetTop) + 'px';
+    }
+
+    function stopResize() {
+      window.removeEventListener('mousemove', resize);
+      window.removeEventListener('mouseup', stopResize);
+    }
+
+    // Open Modal Settings
+    modalSettingsButton.addEventListener('click', function() {
+      modalSettings.classList.add('visible');
+    });
+
+    // Close Modal Settings
+    settingsCloseButton.addEventListener('click', function() {
+      modalSettings.classList.remove('visible');
+    });
+
+    // Theme Selection
+    lightModeRadio.addEventListener('change', function() {
+      if (lightModeRadio.checked) {
+        document.body.classList.remove('dark-mode');
+        saveThemePreference('light');
+      }
+    });
+
+    darkModeRadio.addEventListener('change', function() {
+      if (darkModeRadio.checked) {
+        document.body.classList.add('dark-mode');
+        saveThemePreference('dark');
+      }
+    });
+
+    function applySavedTheme() {
+      var theme = getCookie('modalTheme');
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        darkModeRadio.checked = true;
+      } else {
+        document.body.classList.remove('dark-mode');
+        lightModeRadio.checked = true;
+      }
+    }
+
+    // Save Theme Preference in Cookies
+    function saveThemePreference(theme) {
+      document.cookie = 'modalTheme=' + theme + '; path=/';
+    }
+
+    // Get Cookie Value
+    function getCookie(name) {
+      var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      if (match) return match[2];
+    }
+  }
+
+  // Open Help Center Modal
+  document.getElementById('openHelpCenterModalButton').addEventListener('click', function() {
+    var modal = document.getElementById('helpcentermodal');
+    if (!modal.innerHTML.trim()) {
+      buildHelpCenterModal();
+    }
+    modal.style.display = 'block';
+    modal.classList.add('open', 'fullscreen');
+  });
+})();
+</script>
+
     <!-- Apple iOS Safari settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,6 +756,7 @@
                     <li class="noVNC_version_wrapper">
                         <span>SkyHighSundae VNC Version:</span>
                         <span class="noVNC_version"></span>
+                        <button id="openHelpCenterModalButton" type="button">Help Center</button>
                         <button type="button" onclick="
     var modal = document.createElement('div');
     modal.style.position = 'fixed';
